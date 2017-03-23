@@ -18,3 +18,5 @@ export class LoadPageSuccessAction implements Action {
     type = ActionTypes.LOAD_PAGE_SUCCESS;
     constructor(public payload: Movie[]) { }
 }
+
+export type Actions = LoadPageAction | LoadPageSuccessAction;
