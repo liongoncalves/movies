@@ -7,11 +7,10 @@ import { StoreModule } from '@ngrx/store';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-
+import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { SharedModule } from './shared';
-import { MoviesModule } from './movies';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -29,7 +28,7 @@ import {reducer} from './reducers';
     MaterialModule,
     SharedModule,
     AppRoutingModule,
-    MoviesModule,
+    RouterStoreModule.connectRouter(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -37,7 +36,7 @@ import {reducer} from './reducers';
      * meta-reducer. This returns all providers for an @ngrx/store
      * based application.
      */
-    StoreModule.provideStore(reducer),
+    StoreModule.provideStore( reducer),
     StoreDevtoolsModule.instrumentStore(),
   ],
   providers: [],

@@ -7,7 +7,7 @@ import * as movies from '../actions';
 export interface State {
     page: number;
     movies: Movie[];
-    totalResult: number;
+    totalMovies: number;
     totalPages: number;
     loading: boolean;
 };
@@ -15,7 +15,7 @@ export interface State {
 const initialState: State = {
     page: 0,
     movies: [],
-    totalResult: 0,
+    totalMovies: 0,
     totalPages: 0,
     loading: false
 };
@@ -23,10 +23,25 @@ const initialState: State = {
 export function reducer(state = initialState, action: Action): State {
     switch (action.type) {
         case movies.ActionTypes.LOAD_PAGE_SUCCESS: {
-            return { ...action.payload, loading: false };
+            return {
+                page: action.payload.page,
+                movies: action.payload.results,
+                totalMovies: action.payload.totalResult,
+                totalPages: action.payload.totalPages,
+                loading: false
+            };
         }
         default: {
             return state;
         }
     }
 };
+
+const getMoviesState = state => state.movies;
+
+const getMovies = (state: State) => {
+    debugger;
+    return state.movies;
+}
+
+export const getEntities = createSelector(getMoviesState, getMovies);

@@ -1,4 +1,5 @@
 import { ActionReducer } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
 
 import { environment } from '../../environments/environment';
 
@@ -49,7 +50,8 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
-  movies: fromMovies.reducer
+  movies: fromMovies.reducer,
+  router: routerReducer
 };
 
 
